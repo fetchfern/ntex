@@ -53,6 +53,10 @@ where
         );
         resp.set_body(Body::from(buf))
     }
+
+    fn details(&self) -> Option<&str> {
+        None
+    }
 }
 
 impl<Err: ErrorRenderer> WebResponseError<Err> for std::convert::Infallible {}
