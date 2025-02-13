@@ -1,5 +1,5 @@
 //! Web error
-use std::{cell::RefCell, fmt, io::Write, marker::PhantomData};
+use std::{cell::RefCell, fmt, io::Write, marker::PhantomData, any::Any};
 
 use thiserror::Error;
 
@@ -54,8 +54,8 @@ where
         resp.set_body(Body::from(buf))
     }
 
-    fn details(&self) -> Option<&str> {
-        None
+    fn as_any(&self) -> &dyn Any where Self: Sized {
+        self as &dyn Any
     }
 }
 
