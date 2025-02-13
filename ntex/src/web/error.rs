@@ -54,8 +54,8 @@ where
         resp.set_body(Body::from(buf))
     }
 
-    fn as_any(&self) -> &dyn Any where Self: Sized {
-        self as &dyn Any
+    fn as_any(&self) -> Option<&dyn Any> {
+        None
     }
 }
 
